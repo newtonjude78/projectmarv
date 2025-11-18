@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O-Level Learning Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>O-Level Learning Hub</h1>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">☰</button>
+        <nav id="main-nav" class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#subjects">Subjects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Your Path to O-Level Success</h2>
+            <p>Select a subject below to start your tutorial.</p>
+        </section>
+
+        <section id="subjects" class="subject-grid">
+            <div class="subject-card" data-subject="math">
+                <h3>Chemistry</h3>
+                <p>Algebra, Geometry, Calculus basics.</p>
+                <a href="maths.html" class="btn">Start Learning</a>
+            </div>
+            <div class="subject-card" data-subject="math">
+                <h3>Mathematics</h3>
+                <p>Algebra, Geometry, Calculus basics.</p>
+                <a href="maths.html" class="btn">Start Learning</a>
+            </div>
+            <div class="subject-card" data-subject="math">
+                <h3>Biology</h3>
+                <p>Algebra, Geometry, Calculus basics.</p>
+                <a href="maths.html" class="btn">Start Learning</a>
+            </div>
+            <div class="subject-card" data-subject="physics">
+                <h3>Physics</h3>
+                <p>Mechanics, Waves, Electricity.</p>
+                <a href="physics.html" class="btn">Start Learning</a>
+            </div>
+            </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+        <p>&copy; 2025 O-Level Hub. Designed for Lazy Marvellous.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

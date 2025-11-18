@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O-Level Practice Exam - Timed MCQ</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the quiz UI */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Light background */
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .quiz-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        .question-block {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .question-block:last-child {
+            border-bottom: none;
+        }
+        .option-label {
+            display: block;
+            padding: 0.75rem 1rem;
+            margin-top: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            border: 1px solid #dee2e6;
+        }
+        .option-label:hover {
+            background-color: #f0f4f7;
+        }
+        .option-label input[type="radio"] {
+            margin-right: 0.75rem;
+            transform: scale(1.1);
+        }
+        /* Custom highlight classes (added via JS) */
+        .correct-answer {
+            background-color: #d4edda !important; /* Light green */
+            border-color: #1e7e34 !important;
+            font-weight: 600;
+        }
+        .incorrect-answer {
+            background-color: #f8d7da !important; /* Light red */
+            border-color: #dc3545 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="text-center py-6 bg-blue-600 text-white rounded-t-xl mb-6 shadow-md">
+            <h1 class="text-3xl font-extrabold tracking-tight">O-Level Mathematics Practice Exam</h1>
+            <p class="mt-1 text-blue-200">Test your knowledge. 5 Questions, 5 Minutes.</p>
+        </header>
+
+        <div id="quiz-status" class="flex justify-between items-center bg-white p-4 rounded-lg shadow-md mb-6 sticky top-0 z-10">
+            <div id="timer-display" class="text-xl font-bold text-red-600">Time Left: 05:00</div>
+            <div id="score-summary" class="text-xl font-bold text-gray-700">Score: 0 / 5</div>
+        </div>
+
+        <form id="mcq-form" class="quiz-card">
+            <!-- Question 1 -->
+            <div class="question-block" data-question="q1" data-correct-answer="b">
+                <p class="text-lg font-semibold mb-3 text-gray-800">1. Simplify the expression $2(3x - 4) - 5x$.</p>
+                <label class="option-label"><input type="radio" name="q1" value="a" disabled> $x - 8$</label>
+                <label class="option-label"><input type="radio" name="q1" value="b" disabled> $x - 8$</label>
+                <label class="option-label"><input type="radio" name="q1" value="c" disabled> $11x - 8$</label>
+                <label class="option-label"><input type="radio" name="q1" value="d" disabled> $x - 4$</label>
+                <div class="result-feedback mt-2 text-sm"></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-block" data-question="q2" data-correct-answer="a">
+                <p class="text-lg font-semibold mb-3 text-gray-800">2. If $3y + 7 = 22$, what is the value of $y$?</p>
+                <label class="option-label"><input type="radio" name="q2" value="a" disabled> 5</label>
+                <label class="option-label"><input type="radio" name="q2" value="b" disabled> 15</label>
+                <label class="option-label"><input type="radio" name="q2" value="c" disabled> 3</label>
+                <label class="option-label"><input type="radio" name="q2" value="d" disabled> 9</label>
+                <div class="result-feedback mt-2 text-sm"></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-block" data-question="q3" data-correct-answer="c">
+                <p class="text-lg font-semibold mb-3 text-gray-800">3. Calculate the area of a circle with a radius of $10\text{cm}$ (use $\pi = 3.14$).</p>
+                <label class="option-label"><input type="radio" name="q3" value="a" disabled> $31.4\text{cm}^2$</label>
+                <label class="option-label"><input type="radio" name="q3" value="b" disabled> $100\text{cm}^2$</label>
+                <label class="option-label"><input type="radio" name="q3" value="c" disabled> $314\text{cm}^2$</label>
+                <label class="option-label"><input type="radio" name="q3" value="d" disabled> $62.8\text{cm}^2$</label>
+                <div class="result-feedback mt-2 text-sm"></div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-block" data-question="q4" data-correct-answer="d">
+                <p class="text-lg font-semibold mb-3 text-gray-800">4. Find the gradient of the line passing through $(1, 2)$ and $(4, 8)$.</p>
+                <label class="option-label"><input type="radio" name="q4" value="a" disabled> $1/2$</label>
+                <label class="option-label"><input type="radio" name="q4" value="b" disabled> 6</label>
+                <label class="option-label"><input type="radio" name="q4" value="c" disabled> 3</label>
+                <label class="option-label"><input type="radio" name="q4" value="d" disabled> 2</label>
+                <div class="result-feedback mt-2 text-sm"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-block" data-question="q5" data-correct-answer="a">
+                <p class="text-lg font-semibold mb-3 text-gray-800">5. Factorize the quadratic expression $x^2 - 4x + 3$.</p>
+                <label class="option-label"><input type="radio" name="q5" value="a" disabled> $(x - 3)(x - 1)$</label>
+                <label class="option-label"><input type="radio" name="q5" value="b" disabled> $(x + 3)(x - 1)$</label>
+                <label class="option-label"><input type="radio" name="q5" value="c" disabled> $(x - 3)(x + 1)$</label>
+                <label class="option-label"><input type="radio" name="q5" value="d" disabled> $(x + 3)(x + 1)$</label>
+                <div class="result-feedback mt-2 text-sm"></div>
+            </div>
+
+            <div class="p-6 bg-gray-50 flex justify-center space-x-4">
+                <button id="submit-btn" type="button" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200 shadow-md disabled:opacity-50">
+                    Submit Exam
+                </button>
+                <button id="reset-btn" type="button" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition duration-200 shadow-md">
+                    Restart Quiz
+                </button>
+            </div>
+        </form>
+
+        <div id="result-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50">
+            <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md text-center">
+                <h2 class="text-3xl font-bold mb-4 text-blue-600">Exam Finished!</h2>
+                <p class="text-xl text-gray-700 mb-6">You have completed the test.</p>
+                <p id="final-score-text" class="text-4xl font-extrabold text-green-700 mb-8">Score: 0 / 5</p>
+                <button id="close-modal-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-200">
+                    Review Results
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const QUIZ_DURATION = 300; // 5 minutes in seconds
+        let timeLeft = QUIZ_DURATION;
+        let timerInterval;
+        let quizActive = false;
+
+        const form = document.getElementById('mcq-form');
+        const timerDisplay = document.getElementById('timer-display');
+        const submitBtn = document.getElementById('submit-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const scoreSummary = document.getElementById('score-summary');
+        const resultModal = document.getElementById('result-modal');
+        const finalScoreText = document.getElementById('final-score-text');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const questionBlocks = document.querySelectorAll('.question-block');
+        const allRadios = form.querySelectorAll('input[type="radio"]');
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        function startTimer() {
+            if (quizActive) return;
+
+            // Enable all radio buttons for the test
+            allRadios.forEach(radio => radio.disabled = false);
+            submitBtn.disabled = false;
+            quizActive = true;
+            
+            // Initial render
+            timerDisplay.textContent = `Time Left: ${formatTime(timeLeft)}`;
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerDisplay.textContent = `Time Left: ${formatTime(timeLeft)}`;
+
+                if (timeLeft <= 30) {
+                    timerDisplay.classList.add('text-red-800', 'animate-pulse');
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.textContent = "Time's Up! ⏱️";
+                    submitQuiz(true); // Auto-submit on time expiration
+                }
+            }, 1000);
+        }
+
+        function submitQuiz(timedOut = false) {
+            if (!quizActive) return; // Prevent double submission
+            
+            clearInterval(timerInterval);
+            quizActive = false;
+            submitBtn.disabled = true;
+            
+            let score = 0;
+            const totalQuestions = questionBlocks.length;
+            
+            // Disable all inputs and calculate score
+            allRadios.forEach(radio => radio.disabled = true);
+            
+            questionBlocks.forEach(block => {
+                const questionId = block.dataset.question;
+                const correctAnswer = block.dataset.correctAnswer;
+                const selectedOption = form.querySelector(`input[name="${questionId}"]:checked`);
+                const feedbackEl = block.querySelector('.result-feedback');
+                
+                // Clear previous classes
+                block.querySelectorAll('.option-label').forEach(label => {
+                    label.classList.remove('correct-answer', 'incorrect-answer');
+                });
+                feedbackEl.textContent = ''; // Clear feedback text
+
+                // Find the label for the correct answer
+                const correctLabel = form.querySelector(`input[name="${questionId}"][value="${correctAnswer}"]`).closest('.option-label');
+                correctLabel.classList.add('correct-answer');
+                
+                if (selectedOption) {
+                    const selectedValue = selectedOption.value;
+                    if (selectedValue === correctAnswer) {
+                        score++;
+                        feedbackEl.textContent = "✅ Correct!";
+                        feedbackEl.classList.remove('text-red-500');
+                        feedbackEl.classList.add('text-green-600');
+                    } else {
+                        // Highlight the incorrect selection
+                        selectedOption.closest('.option-label').classList.add('incorrect-answer');
+                        feedbackEl.textContent = "❌ Incorrect. The correct answer is highlighted in green.";
+                        feedbackEl.classList.remove('text-green-600');
+                        feedbackEl.classList.add('text-red-500');
+                    }
+                } else {
+                    feedbackEl.textContent = "You did not answer this question.";
+                    feedbackEl.classList.remove('text-green-600');
+                    feedbackEl.classList.add('text-red-500');
+                }
+            });
+
+            // Update main score display
+            scoreSummary.textContent = `Score: ${score} / ${totalQuestions}`;
+
+            // Show modal with final score
+            finalScoreText.textContent = `Score: ${score} / ${totalQuestions}`;
+            resultModal.classList.remove('hidden');
+
+            // Handle timeout message
+            if (timedOut) {
+                 timerDisplay.textContent = "Time's Up! Test Auto-Submitted.";
+            } else {
+                 timerDisplay.textContent = "Completed.";
+            }
+        }
+
+        function resetQuiz() {
+            // Clear all fields and styles
+            form.reset();
+            timeLeft = QUIZ_DURATION;
+            quizActive = false;
+            clearInterval(timerInterval);
+
+            // Reset UI elements
+            allRadios.forEach(radio => radio.disabled = true);
+            submitBtn.disabled = true;
+            timerDisplay.textContent = `Time Left: ${formatTime(timeLeft)}`;
+            timerDisplay.classList.remove('text-red-800', 'animate-pulse');
+            scoreSummary.textContent = 'Score: 0 / 5';
+
+            // Remove result highlighting
+            questionBlocks.forEach(block => {
+                block.querySelectorAll('.option-label').forEach(label => {
+                    label.classList.remove('correct-answer', 'incorrect-answer');
+                });
+                block.querySelector('.result-feedback').textContent = '';
+            });
+
+            // Start the quiz again
+            startTimer();
+        }
+
+        // --- Event Listeners ---
+        submitBtn.addEventListener('click', () => submitQuiz(false));
+        resetBtn.addEventListener('click', resetQuiz);
+        closeModalBtn.addEventListener('click', () => resultModal.classList.add('hidden'));
+
+        // Initialize quiz on load
+        window.onload = startTimer;
+    </script>
+</body>
+</html>

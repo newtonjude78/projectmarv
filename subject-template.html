@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subject</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 id="subjectTitle">Loading...</h1>
+    <nav>
+      <a href="subjects.html">Back</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="notes">
+      <h2>Notes</h2>
+      <div id="notesArea">
+        <!-- Example topic card -->
+        <article class="topic-card">
+          <h3>Topic: Example</h3>
+          <p>Write detailed notes here for each topic. You can include images, formulas, and example problems.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mcq-section">
+      <h2>Practice MCQs</h2>
+      <div id="mcqContainer"></div>
+      <div class="mcq-actions">
+        <button class="btn" id="submitBtn">Submit</button>
+        <button class="btn" id="resetBtn">Reset</button>
+      </div>
+      <div id="result"></div>
+    </section>
+
+    <section class="progress">
+      <h2>Progress</h2>
+      <div id="progressList">No progress yet.</div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
